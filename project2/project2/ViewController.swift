@@ -16,6 +16,8 @@ class ViewController: UIViewController {
     var score = 0
     var correctAnswer = 0
     
+    var questionNumber = 0
+    
     override func viewDidLoad() {
         super.viewDidLoad()
         // Do any additional setup after loading the view.
@@ -43,7 +45,7 @@ class ViewController: UIViewController {
         
         correctAnswer = Int.random(in: 0...2)
         
-        title = countries[correctAnswer].uppercased()
+        title = "\(countries[correctAnswer].uppercased()), Score: \(score)"
     }
     
     @IBAction func buttonTapped(_ sender: UIButton) {
@@ -53,13 +55,23 @@ class ViewController: UIViewController {
             title = "Correct"
             score += 1
         } else {
-            title = "Wrong"
+            title = "Wrong, that's the flag of \(countries[sender.tag].uppercased())"
             score -= 1
         }
+        questionNumber += 1
         
-        let ac = UIAlertController(title: title, message: "Your score is \(score)", preferredStyle: .alert)
-        ac.addAction(UIAlertAction(title: "Continue", style: .default, handler: askQuestion))
-        present(ac, animated: true)
+        if questionNumber < 10 {
+            let ac = UIAlertController(title: title, message: "Your score is \(score)", preferredStyle: .alert)
+            ac.addAction(UIAlertAction(title: "Continue", style: .default, handler: askQuestion))
+            present(ac, animated: true)
+        } else {
+            let finalAc = UIAlertController(title: title, message: "Your final score is \(score)", preferredStyle: .alert)
+            finalAc.addAction(UIAlertAction(title: "Restart", style: .default, handler: { _ in
+                self.score = 0
+                self.questionNumber = 0
+            }))
+            present(finalAc, animated: true)
+        }
     }
 }
 
