@@ -29,15 +29,7 @@ class ViewController: UITableViewController {
         }
         
         pictures.sort()
-        
-        navigationItem.rightBarButtonItem = UIBarButtonItem(barButtonSystemItem: .action, target: self, action: #selector(shareTapped))
     }
-    
-    @objc func shareTapped() {
-        let vc = UIActivityViewController(activityItems: ["https://apps.apple.com/ru/app/apple-developer/id640199958"], applicationActivities: [])
-        present(vc, animated: true)
-    }
-    
     override func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
         return pictures.count
     }

@@ -34,6 +34,9 @@ class ViewController: UIViewController {
         button2.layer.borderColor = UIColor.lightGray.cgColor
         
         askQuestion(action: nil)
+        
+        navigationItem.rightBarButtonItem = UIBarButtonItem(title: "Score", image: UIImage(systemName: "gamecontroller"), target: self, action: #selector(navButtonTapped))
+        
     }
 
     func askQuestion(action: UIAlertAction!) {
@@ -46,6 +49,12 @@ class ViewController: UIViewController {
         correctAnswer = Int.random(in: 0...2)
         
         title = "\(countries[correctAnswer].uppercased()), Score: \(score)"
+    }
+    
+    @objc func navButtonTapped() {
+        let ac = UIAlertController(title: "Current score: \(score)", message: nil, preferredStyle: .alert)
+        ac.addAction(UIAlertAction(title: "Close", style: .cancel))
+        present(ac, animated: true)
     }
     
     @IBAction func buttonTapped(_ sender: UIButton) {
