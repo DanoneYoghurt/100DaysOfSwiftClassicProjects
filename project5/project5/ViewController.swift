@@ -64,8 +64,6 @@ class ViewController: UITableViewController {
     func submit(_ answer: String) {
         let lowerAnswer = answer.lowercased()
 
-        
-
         if isPossible(word: lowerAnswer) {
             if isOriginal(word: lowerAnswer) {
                 if isReal(word: lowerAnswer) {
@@ -86,7 +84,6 @@ class ViewController: UITableViewController {
             showErrorMessage(errorTitle: "Word not possible", errorMessage: "You can't spell that word from \(title)")
         }
 
-        
     }
     
     func showErrorMessage(errorTitle: String, errorMessage: String) {
