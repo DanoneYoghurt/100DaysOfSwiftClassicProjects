@@ -15,6 +15,7 @@
 		DCFF14F92C75F58B00CE52AD /* Base in Resources */ = {isa = PBXBuildFile; fileRef = DCFF14F82C75F58B00CE52AD /* Base */; };
 		DCFF15012C76021A00CE52AD /* Petition.swift in Sources */ = {isa = PBXBuildFile; fileRef = DCFF15002C76021A00CE52AD /* Petition.swift */; };
 		DCFF15032C76027400CE52AD /* Petitions.swift in Sources */ = {isa = PBXBuildFile; fileRef = DCFF15022C76027400CE52AD /* Petitions.swift */; };
+		DCFF15052C7607EE00CE52AD /* DetailViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = DCFF15042C7607EE00CE52AD /* DetailViewController.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -28,6 +29,7 @@
 		DCFF14FA2C75F58B00CE52AD /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		DCFF15002C76021A00CE52AD /* Petition.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Petition.swift; sourceTree = "<group>"; };
 		DCFF15022C76027400CE52AD /* Petitions.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Petitions.swift; sourceTree = "<group>"; };
+		DCFF15042C7607EE00CE52AD /* DetailViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DetailViewController.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -63,6 +65,7 @@
 				DCFF14EC2C75F58800CE52AD /* AppDelegate.swift */,
 				DCFF14EE2C75F58800CE52AD /* SceneDelegate.swift */,
 				DCFF14F02C75F58800CE52AD /* ViewController.swift */,
+				DCFF15042C7607EE00CE52AD /* DetailViewController.swift */,
 				DCFF15002C76021A00CE52AD /* Petition.swift */,
 				DCFF15022C76027400CE52AD /* Petitions.swift */,
 				DCFF14F22C75F58800CE52AD /* Main.storyboard */,
@@ -147,6 +150,7 @@
 				DCFF14F12C75F58800CE52AD /* ViewController.swift in Sources */,
 				DCFF15012C76021A00CE52AD /* Petition.swift in Sources */,
 				DCFF14ED2C75F58800CE52AD /* AppDelegate.swift in Sources */,
+				DCFF15052C7607EE00CE52AD /* DetailViewController.swift in Sources */,
 				DCFF14EF2C75F58800CE52AD /* SceneDelegate.swift in Sources */,
 				DCFF15032C76027400CE52AD /* Petitions.swift in Sources */,
 			);
