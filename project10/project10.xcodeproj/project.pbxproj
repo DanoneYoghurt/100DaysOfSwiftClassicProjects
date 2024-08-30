@@ -14,6 +14,7 @@
 		DC7055C62C8080F1008E2E5B /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = DC7055C52C8080F1008E2E5B /* Assets.xcassets */; };
 		DC7055C92C8080F1008E2E5B /* Base in Resources */ = {isa = PBXBuildFile; fileRef = DC7055C82C8080F1008E2E5B /* Base */; };
 		DC7055D12C808856008E2E5B /* PersonCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = DC7055D02C808856008E2E5B /* PersonCell.swift */; };
+		DCB494552C81D21100B089E6 /* Person.swift in Sources */ = {isa = PBXBuildFile; fileRef = DCB494542C81D21100B089E6 /* Person.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -26,6 +27,7 @@
 		DC7055C82C8080F1008E2E5B /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
 		DC7055CA2C8080F1008E2E5B /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		DC7055D02C808856008E2E5B /* PersonCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PersonCell.swift; sourceTree = "<group>"; };
+		DCB494542C81D21100B089E6 /* Person.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Person.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -62,6 +64,7 @@
 				DC7055BE2C8080EF008E2E5B /* SceneDelegate.swift */,
 				DC7055C02C8080EF008E2E5B /* ViewController.swift */,
 				DC7055D02C808856008E2E5B /* PersonCell.swift */,
+				DCB494542C81D21100B089E6 /* Person.swift */,
 				DC7055C22C8080EF008E2E5B /* Main.storyboard */,
 				DC7055C52C8080F1008E2E5B /* Assets.xcassets */,
 				DC7055C72C8080F1008E2E5B /* LaunchScreen.storyboard */,
@@ -141,6 +144,7 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				DCB494552C81D21100B089E6 /* Person.swift in Sources */,
 				DC7055C12C8080EF008E2E5B /* ViewController.swift in Sources */,
 				DC7055BD2C8080EF008E2E5B /* AppDelegate.swift in Sources */,
 				DC7055D12C808856008E2E5B /* PersonCell.swift in Sources */,
