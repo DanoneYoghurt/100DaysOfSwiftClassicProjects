@@ -36,7 +36,7 @@ class ViewController: UIViewController {
         
         var hiddenWord: String {
             var character = ""
-            for letter in word {
+            for _ in word {
                 character += "?"
             }
             return character
