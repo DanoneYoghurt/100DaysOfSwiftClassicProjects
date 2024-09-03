@@ -7,6 +7,7 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		DC0E4D372C86E69000FE0415 /* FireParticles.sks in Resources */ = {isa = PBXBuildFile; fileRef = DC0E4D362C86E69000FE0415 /* FireParticles.sks */; };
 		DCEE2D3F2C8485E400874308 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = DCEE2D3E2C8485E400874308 /* AppDelegate.swift */; };
 		DCEE2D412C8485E500874308 /* GameScene.sks in Resources */ = {isa = PBXBuildFile; fileRef = DCEE2D402C8485E500874308 /* GameScene.sks */; };
 		DCEE2D452C8485E500874308 /* GameScene.swift in Sources */ = {isa = PBXBuildFile; fileRef = DCEE2D442C8485E500874308 /* GameScene.swift */; };
@@ -17,6 +18,7 @@
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
+		DC0E4D362C86E69000FE0415 /* FireParticles.sks */ = {isa = PBXFileReference; lastKnownFileType = file.sks; path = FireParticles.sks; sourceTree = "<group>"; };
 		DCEE2D3B2C8485E400874308 /* project11.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = project11.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		DCEE2D3E2C8485E400874308 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		DCEE2D402C8485E500874308 /* GameScene.sks */ = {isa = PBXFileReference; lastKnownFileType = file.sks; path = GameScene.sks; sourceTree = "<group>"; };
@@ -62,6 +64,7 @@
 				DCEE2D442C8485E500874308 /* GameScene.swift */,
 				DCEE2D462C8485E500874308 /* GameViewController.swift */,
 				DCEE2D482C8485E500874308 /* Main.storyboard */,
+				DC0E4D362C86E69000FE0415 /* FireParticles.sks */,
 				DCEE2D4B2C8485E700874308 /* Assets.xcassets */,
 				DCEE2D4D2C8485E700874308 /* LaunchScreen.storyboard */,
 			);
@@ -128,6 +131,7 @@
 			files = (
 				DCEE2D412C8485E500874308 /* GameScene.sks in Resources */,
 				DCEE2D4A2C8485E500874308 /* Base in Resources */,
+				DC0E4D372C86E69000FE0415 /* FireParticles.sks in Resources */,
 				DCEE2D4C2C8485E700874308 /* Assets.xcassets in Resources */,
 				DCEE2D4F2C8485E700874308 /* Base in Resources */,
 			);
