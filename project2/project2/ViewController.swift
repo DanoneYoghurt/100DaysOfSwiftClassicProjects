@@ -14,6 +14,7 @@ class ViewController: UIViewController {
     
     var countries = [String]()
     var score = 0
+    var highScore = 0
     var correctAnswer = 0
     
     var questionNumber = 0
@@ -21,6 +22,14 @@ class ViewController: UIViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
         // Do any additional setup after loading the view.
+        
+        if let savedData = UserDefaults.standard.object(forKey: "highScore") as? Data {
+            do {
+                highScore = try JSONDecoder().decode(Int.self, from: savedData)
+            } catch {
+                print("failed to load")
+            }
+        }
         
         countries += ["estonia", "france", "germany", "ireland", "italy", "monaco", "nigeria", "poland", "russia", "spain", "uk", "us"]
         
@@ -65,7 +74,9 @@ class ViewController: UIViewController {
             score += 1
         } else {
             title = "Wrong, that's the flag of \(countries[sender.tag].uppercased())"
-            score -= 1
+            if score > 0 {
+                score -= 1
+            }
         }
         questionNumber += 1
         
@@ -74,12 +85,34 @@ class ViewController: UIViewController {
             ac.addAction(UIAlertAction(title: "Continue", style: .default, handler: askQuestion))
             present(ac, animated: true)
         } else {
-            let finalAc = UIAlertController(title: title, message: "Your final score is \(score)", preferredStyle: .alert)
+            var message = ""
+            
+            if score < highScore {
+                message = "Your final score is \(score)"
+            } else {
+                if score > highScore {
+                    highScore = score
+                    save()
+                }
+                message = "You beat your highscore! New highscore: \(highScore)"
+                
+            }
+            
+            let finalAc = UIAlertController(title: title, message: message, preferredStyle: .alert)
             finalAc.addAction(UIAlertAction(title: "Restart", style: .default, handler: { _ in
                 self.score = 0
                 self.questionNumber = 0
             }))
             present(finalAc, animated: true)
+        }
+        
+    }
+    
+    func save() {
+        if let savedData = try? JSONEncoder().encode(highScore) {
+            UserDefaults.standard.setValue(savedData, forKey: "highScore")
+        } else {
+            print("Failed to save")
         }
     }
 }

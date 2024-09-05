@@ -10,6 +10,7 @@ import UIKit
 class ViewController: UITableViewController {
     
     var pictures = [String]()
+    var timesShown = [Int]()
 
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -27,9 +28,21 @@ class ViewController: UITableViewController {
             for item in items {
                 if item.hasPrefix("nssl") {
                     self?.pictures.append(item)
+                    if ((self?.timesShown.isEmpty) != nil) {
+                        self?.timesShown.append(0)
+                    }
+                }
+            }
+            
+            if let savedData = UserDefaults.standard.object(forKey: "timesShown") as? Data {
+                do {
+                    self?.timesShown = try JSONDecoder().decode([Int].self, from: savedData)
+                } catch {
+                    print("failed to load")
                 }
             }
         }
+        
         
         pictures.sort()
         
@@ -52,15 +65,29 @@ class ViewController: UITableViewController {
     override func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         let cell = tableView.dequeueReusableCell(withIdentifier: "Picture", for: indexPath)
         cell.textLabel?.text = pictures[indexPath.row]
+        cell.detailTextLabel?.text = "Times shown: \(timesShown[indexPath.row])"
         return cell
     }
     
     override func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
+        timesShown[indexPath.row] += 1
+        save()
+        DispatchQueue.main.async { [weak self] in
+            self?.tableView.reloadData()
+        }
         if let vc = storyboard?.instantiateViewController(withIdentifier: "Detail") as? DetailViewController {
             vc.selectedImage = pictures[indexPath.row]
             vc.selectedImageCount = pictures.count
             vc.selectedImageNumber = Int(pictures.firstIndex(of: pictures[indexPath.row]) ?? 0) + 1
             navigationController?.pushViewController(vc, animated: true)
+        }
+    }
+    
+    func save() {
+        if let savedData = try? JSONEncoder().encode(timesShown) {
+            UserDefaults.standard.setValue(savedData, forKey: "timesShown")
+        } else {
+            print("Failed to save")
         }
     }
 

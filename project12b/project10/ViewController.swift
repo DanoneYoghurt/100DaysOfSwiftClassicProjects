@@ -15,6 +15,18 @@ class ViewController: UICollectionViewController, UIImagePickerControllerDelegat
         super.viewDidLoad()
         
         navigationItem.leftBarButtonItem = UIBarButtonItem(barButtonSystemItem: .add, target: self, action: #selector(addNewPerson))
+        
+        let dafaults = UserDefaults.standard
+        
+        if let savedPeople = dafaults.object(forKey: "people") as? Data {
+            let jsonDecoder = JSONDecoder()
+            
+            do {
+                people = try jsonDecoder.decode([Person].self, from: savedPeople)
+            } catch {
+                print("Failed to load people.")
+            }
+        }
     }
     
     override func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
@@ -54,6 +66,7 @@ class ViewController: UICollectionViewController, UIImagePickerControllerDelegat
         
         ac.addAction(UIAlertAction(title: "Delete", style: .destructive, handler: { [weak self] _ in
             self?.people.remove(at: indexPath.item)
+            self?.save()
             collectionView.reloadData()
         }))
         
@@ -67,7 +80,7 @@ class ViewController: UICollectionViewController, UIImagePickerControllerDelegat
             ac2.addAction(UIAlertAction(title: "OK", style: .default, handler: { [weak self, weak ac2] _ in
                 guard let newName = ac2?.textFields?[0].text else { return }
                 person.name = newName
-                
+                self?.save()
                 self?.collectionView.reloadData()
             }))
             
@@ -101,6 +114,7 @@ class ViewController: UICollectionViewController, UIImagePickerControllerDelegat
         
         let person = Person(name: "Unknown", image: imageName)
         people.append(person)
+        save()
         collectionView.reloadData()
         
         dismiss(animated: true)
@@ -109,6 +123,16 @@ class ViewController: UICollectionViewController, UIImagePickerControllerDelegat
     func getDocumentsDirectory() -> URL {
         let paths = try! FileManager.default.url(for: .documentDirectory, in: .userDomainMask, appropriateFor: nil, create: false)
         return paths
+    }
+    
+    func save() {
+        let jsonEncoder = JSONEncoder()
+        if let savedData = try? jsonEncoder.encode(people) {
+            let defaults = UserDefaults.standard
+            defaults.setValue(savedData, forKey: "people")
+        } else {
+            print("failed to save people.")
+        }
     }
     
 }

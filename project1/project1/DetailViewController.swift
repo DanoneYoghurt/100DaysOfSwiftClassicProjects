@@ -13,6 +13,7 @@ class DetailViewController: UIViewController {
     var selectedImage: String?
     var selectedImageCount: Int?
     var selectedImageNumber: Int?
+    var timesShown = 0
     
     override func viewDidLoad() {
         super.viewDidLoad()
