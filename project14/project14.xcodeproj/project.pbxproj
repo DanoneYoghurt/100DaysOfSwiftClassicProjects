@@ -7,6 +7,11 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		DC8D36F82C95EA7000452544 /* whack.caf in Resources */ = {isa = PBXBuildFile; fileRef = DC8D36F62C95EA7000452544 /* whack.caf */; };
+		DC8D36F92C95EA7000452544 /* whackBad.caf in Resources */ = {isa = PBXBuildFile; fileRef = DC8D36F72C95EA7000452544 /* whackBad.caf */; };
+		DC8D36FD2C95EC0E00452544 /* SmokeParticle.sks in Resources */ = {isa = PBXBuildFile; fileRef = DC8D36FC2C95EC0E00452544 /* SmokeParticle.sks */; };
+		DC8D37032C95EF8C00452544 /* MudParticles.sks in Resources */ = {isa = PBXBuildFile; fileRef = DC8D37022C95EF8C00452544 /* MudParticles.sks */; };
+		DC8D37052C95F4D200452544 /* gameOver.m4a in Resources */ = {isa = PBXBuildFile; fileRef = DC8D37042C95F4D200452544 /* gameOver.m4a */; };
 		DCDC14DA2C94442100EE2E0C /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = DCDC14D92C94442100EE2E0C /* AppDelegate.swift */; };
 		DCDC14DC2C94442100EE2E0C /* GameScene.sks in Resources */ = {isa = PBXBuildFile; fileRef = DCDC14DB2C94442100EE2E0C /* GameScene.sks */; };
 		DCDC14E02C94442200EE2E0C /* GameScene.swift in Sources */ = {isa = PBXBuildFile; fileRef = DCDC14DF2C94442200EE2E0C /* GameScene.swift */; };
@@ -18,6 +23,11 @@
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
+		DC8D36F62C95EA7000452544 /* whack.caf */ = {isa = PBXFileReference; lastKnownFileType = file; path = whack.caf; sourceTree = "<group>"; };
+		DC8D36F72C95EA7000452544 /* whackBad.caf */ = {isa = PBXFileReference; lastKnownFileType = file; path = whackBad.caf; sourceTree = "<group>"; };
+		DC8D36FC2C95EC0E00452544 /* SmokeParticle.sks */ = {isa = PBXFileReference; lastKnownFileType = file.sks; path = SmokeParticle.sks; sourceTree = "<group>"; };
+		DC8D37022C95EF8C00452544 /* MudParticles.sks */ = {isa = PBXFileReference; lastKnownFileType = file.sks; path = MudParticles.sks; sourceTree = "<group>"; };
+		DC8D37042C95F4D200452544 /* gameOver.m4a */ = {isa = PBXFileReference; lastKnownFileType = file; path = gameOver.m4a; sourceTree = "<group>"; };
 		DCDC14D62C94442100EE2E0C /* project14.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = project14.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		DCDC14D92C94442100EE2E0C /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		DCDC14DB2C94442100EE2E0C /* GameScene.sks */ = {isa = PBXFileReference; lastKnownFileType = file.sks; path = GameScene.sks; sourceTree = "<group>"; };
@@ -62,11 +72,16 @@
 				DCDC14D92C94442100EE2E0C /* AppDelegate.swift */,
 				DCDC14DB2C94442100EE2E0C /* GameScene.sks */,
 				DCDC14DF2C94442200EE2E0C /* GameScene.swift */,
+				DC8D36FC2C95EC0E00452544 /* SmokeParticle.sks */,
+				DC8D37022C95EF8C00452544 /* MudParticles.sks */,
 				DCDC14E12C94442200EE2E0C /* GameViewController.swift */,
 				DCDC14F02C94475500EE2E0C /* WhackSlot.swift */,
 				DCDC14E32C94442200EE2E0C /* Main.storyboard */,
 				DCDC14E62C94442200EE2E0C /* Assets.xcassets */,
 				DCDC14E82C94442200EE2E0C /* LaunchScreen.storyboard */,
+				DC8D36F62C95EA7000452544 /* whack.caf */,
+				DC8D36F72C95EA7000452544 /* whackBad.caf */,
+				DC8D37042C95F4D200452544 /* gameOver.m4a */,
 			);
 			path = project14;
 			sourceTree = "<group>";
@@ -130,9 +145,14 @@
 			buildActionMask = 2147483647;
 			files = (
 				DCDC14DC2C94442100EE2E0C /* GameScene.sks in Resources */,
+				DC8D36F82C95EA7000452544 /* whack.caf in Resources */,
+				DC8D37032C95EF8C00452544 /* MudParticles.sks in Resources */,
 				DCDC14E52C94442200EE2E0C /* Base in Resources */,
+				DC8D37052C95F4D200452544 /* gameOver.m4a in Resources */,
+				DC8D36FD2C95EC0E00452544 /* SmokeParticle.sks in Resources */,
 				DCDC14E72C94442200EE2E0C /* Assets.xcassets in Resources */,
 				DCDC14EA2C94442200EE2E0C /* Base in Resources */,
+				DC8D36F92C95EA7000452544 /* whackBad.caf in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
