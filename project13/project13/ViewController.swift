@@ -23,6 +23,8 @@ class ViewController: UIViewController, UIImagePickerControllerDelegate & UINavi
         
         title = "Instafilter"
         
+        imageView.alpha = 0
+        
         navigationItem.rightBarButtonItem = UIBarButtonItem(barButtonSystemItem: .add, target: self, action: #selector(importPicture))
         
         context = CIContext()
@@ -42,6 +44,10 @@ class ViewController: UIViewController, UIImagePickerControllerDelegate & UINavi
         dismiss(animated: true)
         
         currentImage = image
+        
+        UIView.animate(withDuration: 2) {
+            self.imageView.alpha = 1
+        }
         
         let beginImage = CIImage(image: currentImage)
         currentFilter.setValue(beginImage, forKey: kCIInputImageKey)
