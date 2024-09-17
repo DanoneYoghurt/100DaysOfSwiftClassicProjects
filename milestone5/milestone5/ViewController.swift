@@ -53,10 +53,13 @@ class ViewController: UITableViewController {
     // Метод для вызыва при выборе ячейки пользователем
     override func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
         
+        // Создаем ссылку на ViewController
         if let vc = storyboard?.instantiateViewController(withIdentifier: "Detail") as? DetailViewController {
             
+            // Передаем страну
             vc.country = countries[indexPath.row]
             
+            // Открываем контроллер
             navigationController?.pushViewController(vc, animated: true)
         }
     }
