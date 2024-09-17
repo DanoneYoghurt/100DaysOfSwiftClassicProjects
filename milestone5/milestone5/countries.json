@@ -1,0 +1,38 @@
+[
+    {
+        "name": "Russia",
+        "capital": "Moscow",
+        "countryDescription": "Russia,[b] or the Russian Federation,[c] is a country spanning Eastern Europe and North Asia. It is the largest country in the world by area, extending across eleven time zones and sharing land borders with fourteen countries.[d] It is the world's ninth-most populous country and Europe's most populous country. Russia is a highly urbanised country including 16 population centres with over a million inhabitants. Its capital and largest city is Moscow. Saint Petersburg is Russia's second-largest city and its cultural capital.",
+        "population": 146150789
+    },
+    {
+        "name": "US",
+        "capital": "Washington DC",
+        "countryDescription": "The United States of America (USA or U.S.A.), commonly known as the United States (US or U.S.) or America, is a country primarily located in North America. It is a federal union of 50 states, the federal capital district of Washington, D.C., and 326 Indian reservations.[j] The 48 contiguous states border Canada to the north and Mexico to the south. The State of Alaska lies to the northwest, while the State of Hawaii is an archipelago in the Pacific Ocean. The United States also asserts sovereignty over five major island territories and various uninhabited islands.[k] The country has the world's third-largest land area,[d] second-largest exclusive economic zone, and third-largest population, exceeding 334 million.",
+        "population": 345426571
+    },
+    {
+        "name": "Estonia",
+        "capital": "Tallinn",
+        "countryDescription": "Estonia,[c] officially the Republic of Estonia,[d] is a country by the Baltic Sea in Northern Europe.[e] It is bordered to the north by the Gulf of Finland across from Finland, to the west by the sea across from Sweden, to the south by Latvia, and to the east by Lake Peipus and Russia. The territory of Estonia consists of the mainland, the larger islands of Saaremaa and Hiiumaa, and over 2,300 other islands and islets on the east coast of the Baltic Sea,[12] covering a total area of 45,335 square kilometres (17,504 sq mi). Tallinn, the capital city, and Tartu are the two largest urban areas. The Estonian language is the indigenous and official language, also being the first language of the majority of the population of 1.4 million.",
+        "population": 1373101
+    },
+    {
+        "name": "Germany",
+        "capital": "Berlin",
+        "countryDescription": "Germany,[e] officially the Federal Republic of Germany,[f] is a country in Central Europe. It lies between the Baltic and North Sea to the north and the Alps to the south. Its sixteen constituent states have a total population of over 82 million in an area of 357,569 km2 (138,058 sq mi), making it the most populous member state of the European Union. It borders Denmark to the north, Poland and Czechia to the east, Austria and Switzerland to the south, and France, Luxembourg, Belgium, and the Netherlands to the west. The nation's capital and most populous city is Berlin and its main financial centre is Frankfurt; the largest urban area is the Ruhr.",
+        "population": 82519540
+    },
+    {
+        "name": "Italy",
+        "capital": "Rome",
+        "countryDescription": "Italy,[a] officially the Italian Republic,[b] is a country in Southern[12] and Western[13][c] Europe. It consists of a peninsula that extends into the Mediterranean Sea, with the Alps on its northern land border, as well as islands, notably Sicily and Sardinia.[15] Italy shares its borders with France, Switzerland, Austria, Slovenia and two enclaves: Vatican City and San Marino. It is the tenth-largest country in Europe by area, covering 301,340 km2 (116,350 sq mi),[3] and third-most populous member state of the European Union, with a population of nearly 60 million.[16] Its capital and largest city is Rome; other major urban areas include Milan, Naples, Turin, Florence, and Venice.",
+        "population": 58968501
+    },
+    {
+        "name": "Spain",
+        "capital": "Madrid",
+        "countryDescription": "Spain,[f] formally the Kingdom of Spain,[g][h] is a country in southwestern Europe with territories in North Africa.[11][i] It is the largest country in Southern Europe and the fourth-most populous European Union member state. Spanning across the majority of the Iberian Peninsula, its territory also includes the Canary Islands in the Atlantic Ocean, the Balearic Islands in the Mediterranean Sea, and the autonomous cities of Ceuta and Melilla in Africa. Peninsular Spain is bordered to the north by France, Andorra, and the Bay of Biscay; to the east and south by the Mediterranean Sea and Gibraltar; and to the west by Portugal and the Atlantic Ocean. Spain's capital and largest city is Madrid, and other major urban areas include Barcelona, Valencia, and Zaragoza.",
+        "population": 48797875
+    }
+]
