@@ -21,8 +21,10 @@ class GameScene: SKScene, SKPhysicsContactDelegate {
     }
     
     let possibleEnemies = ["ball", "hammer", "tv"]
+    var enemyCounter = 0
     var isGameOver = false
     var gameTimer: Timer?
+    var timeInterval: TimeInterval = 1.0
 
     override func didMove(to view: SKView) {
         backgroundColor = .black
@@ -49,23 +51,39 @@ class GameScene: SKScene, SKPhysicsContactDelegate {
         physicsWorld.gravity = CGVector(dx: 0, dy: 0)
         physicsWorld.contactDelegate = self
         
-        gameTimer = Timer.scheduledTimer(timeInterval: 0.35, target: self, selector: #selector(createEnemy), userInfo: nil, repeats: true)
+        gameTimer = Timer.scheduledTimer(timeInterval: timeInterval, target: self, selector: #selector(createEnemy), userInfo: nil, repeats: true)
+        
+
         
     }
     
     @objc func createEnemy() {
-        guard let enemy = possibleEnemies.randomElement() else { return }
-        
-        let sprite = SKSpriteNode(imageNamed: enemy)
-        sprite.position = CGPoint(x: 1200, y: Int.random(in: 50...736))
-        addChild(sprite)
-        
-        sprite.physicsBody = SKPhysicsBody(texture: sprite.texture!, size: sprite.size)
-        sprite.physicsBody?.categoryBitMask = 1
-        sprite.physicsBody?.velocity = CGVector(dx: -500, dy: 0)
-        sprite.physicsBody?.angularVelocity = 5
-        sprite.physicsBody?.linearDamping = 0
-        sprite.physicsBody?.angularDamping = 0
+        // Челлендж 3: перестать создавать врагов после смерти игрока
+        if !isGameOver {
+            guard let enemy = possibleEnemies.randomElement() else { return }
+            
+            let sprite = SKSpriteNode(imageNamed: enemy)
+            sprite.position = CGPoint(x: 1200, y: Int.random(in: 50...736))
+            addChild(sprite)
+            
+            sprite.physicsBody = SKPhysicsBody(texture: sprite.texture!, size: sprite.size)
+            sprite.physicsBody?.categoryBitMask = 1
+            sprite.physicsBody?.velocity = CGVector(dx: -500, dy: 0)
+            sprite.physicsBody?.angularVelocity = 5
+            sprite.physicsBody?.linearDamping = 0
+            sprite.physicsBody?.angularDamping = 0
+            
+            // Челлендж 2: начать с интервала создания врагов в 1 сек, и каждые 20 врагов уменьшать интервал на 0.1 сек
+            enemyCounter += 1
+            
+            if enemyCounter % 20 == 0 {
+                gameTimer?.invalidate()
+                if timeInterval > 0.1 {
+                    timeInterval -= 0.1
+                }
+                gameTimer = Timer.scheduledTimer(timeInterval: timeInterval, target: self, selector: #selector(createEnemy), userInfo: nil, repeats: true)
+            }
+        }
     }
 
     override func update(_ currentTime: TimeInterval) {
@@ -89,6 +107,17 @@ class GameScene: SKScene, SKPhysicsContactDelegate {
         } else if location.y > 668 {
             location.y = 668
         }
+        
+        player.position = location
+    }
+    
+    // Челлендж 1: не дать игроку читерить перемещая ракету простыми тапами по экрану
+    override func touchesEnded(_ touches: Set<UITouch>, with event: UIEvent?) {
+        guard let touch = touches.first else { return }
+        var location = touch.location(in: self)
+        
+        location.y = 384
+        location.x = 100
         
         player.position = location
     }
