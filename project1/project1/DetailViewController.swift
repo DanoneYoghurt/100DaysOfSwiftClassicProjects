@@ -18,7 +18,8 @@ class DetailViewController: UIViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
         
-        // Do any additional setup after loading the view.
+        assert(selectedImage != nil, "Image is not loaded")
+        
         guard let selectedImageCount else { return }
         guard let selectedImageNumber else { return }
         title = "Picture \(selectedImageNumber) of \(selectedImageCount)"
