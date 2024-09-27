@@ -23,7 +23,12 @@ class ActionViewController: UIViewController {
         notificationCenter.addObserver(self, selector: #selector(adjustForKeyboard), name: UIResponder.keyboardWillHideNotification, object: nil)
         notificationCenter.addObserver(self, selector: #selector(adjustForKeyboard), name: UIResponder.keyboardWillChangeFrameNotification, object: nil)
         
+        
+        
+        navigationItem.leftBarButtonItem = UIBarButtonItem(title: "List of example code", image: UIImage(systemName: "list.bullet"), target: self, action: #selector(showList))
         navigationItem.rightBarButtonItem = UIBarButtonItem(barButtonSystemItem: .done, target: self, action: #selector(done))
+        
+        
         
         if let inputItem = extensionContext?.inputItems.first as? NSExtensionItem {
             if let itemProvider = inputItem.attachments?.first {
@@ -34,12 +39,27 @@ class ActionViewController: UIViewController {
                     self?.pageTitle = javaScriptValues["title"] as? String ?? ""
                     self?.pageURL = javaScriptValues["URL"] as? String ?? ""
                     
+                    
+                    guard let urlHost = URL(string: self?.pageURL ?? "")?.host() else { return }
+                    
+                    self?.script.text = UserDefaults.standard.object(forKey: String(urlHost)) as? String ?? ""
+                    
                     DispatchQueue.main.async {
                         self?.title = self?.pageTitle
                     }
                 }
             }
         }
+    }
+    
+    @objc func showList() {
+        let ac = UIAlertController(title: "Select an example JavaScript code", message: nil, preferredStyle: .actionSheet)
+        ac.addAction(UIAlertAction(title: "Show hello world", style: .default, handler: { action in self.script.text = "alert('Hello, World!')" }))
+        ac.addAction(UIAlertAction(title: "Show page name", style: .default, handler: { action in self.script.text = "alert(document.title);" }))
+        ac.addAction(UIAlertAction(title: "Show page URL", style: .default, handler: { action in self.script.text = "alert(document.URL);" }))
+        ac.addAction(UIAlertAction(title: "Cancel", style: .cancel))
+        
+        present(ac, animated: true)
     }
 
     @IBAction func done() {
@@ -50,6 +70,12 @@ class ActionViewController: UIViewController {
         item.attachments = [customJavaScript]
         
         extensionContext?.completeRequest(returningItems: [item])
+        
+        guard let urlHost = URL(string: pageURL)?.host() else { return }
+        
+        DispatchQueue.main.async {
+            UserDefaults.standard.set(self.script.text, forKey: String(urlHost))
+        }
     }
     
     @objc func adjustForKeyboard(notification: Notification) {
