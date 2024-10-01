@@ -22,6 +22,11 @@ class ViewController: UIViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
         // Do any additional setup after loading the view.
+        UNUserNotificationCenter.current().removeAllPendingNotificationRequests()
+        
+        requestNotificationAuthorization()
+        
+        
         
         if let savedData = UserDefaults.standard.object(forKey: "highScore") as? Data {
             do {
@@ -119,6 +124,37 @@ class ViewController: UIViewController {
             UserDefaults.standard.setValue(savedData, forKey: "highScore")
         } else {
             print("Failed to save")
+        }
+    }
+    
+    func scheduleNotification() {
+        let center = UNUserNotificationCenter.current()
+        
+        let content = UNMutableNotificationContent()
+        content.title = "Set a new high score!"
+        content.body = "You have a new challenge waiting for you!"
+        content.sound = .default
+        
+        var components = DateComponents()
+        components.hour = 10
+        components.minute = 00
+        components.day = 7
+        
+        let trigger = UNCalendarNotificationTrigger(dateMatching: components, repeats: true)
+//        let trigger = UNTimeIntervalNotificationTrigger(timeInterval: 3, repeats: false)
+        
+        let request = UNNotificationRequest(identifier: "highScoreNotification", content: content, trigger: trigger)
+        
+        center.add(request)
+    }
+    
+    func requestNotificationAuthorization() {
+        UNUserNotificationCenter.current().requestAuthorization(options: [.alert, .badge, .sound]) { success, error in
+            if success {
+                self.scheduleNotification()
+            } else {
+                print("Failed to request authorization")
+            }
         }
     }
 }
