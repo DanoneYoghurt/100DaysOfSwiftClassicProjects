@@ -22,15 +22,24 @@
                                 <nil key="textColor"/>
                                 <nil key="highlightedColor"/>
                             </label>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Beacon1" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="V4C-Gi-jrA">
+                                <rect key="frame" x="152" y="486.66666666666669" width="89" height="28.666666666666686"/>
+                                <fontDescription key="fontDescription" type="italicSystem" pointSize="24"/>
+                                <nil key="textColor"/>
+                                <nil key="highlightedColor"/>
+                            </label>
                         </subviews>
                         <viewLayoutGuide key="safeArea" id="6Tk-OE-BBY"/>
                         <color key="backgroundColor" systemColor="systemBackgroundColor"/>
                         <constraints>
+                            <constraint firstItem="V4C-Gi-jrA" firstAttribute="top" secondItem="gE0-ti-UpD" secondAttribute="bottom" constant="24" id="Bpa-Hg-MXS"/>
                             <constraint firstItem="gE0-ti-UpD" firstAttribute="centerX" secondItem="6Tk-OE-BBY" secondAttribute="centerX" id="OXV-hJ-ZiN"/>
                             <constraint firstItem="gE0-ti-UpD" firstAttribute="centerY" secondItem="6Tk-OE-BBY" secondAttribute="centerY" id="Tf0-R8-vfD"/>
+                            <constraint firstItem="V4C-Gi-jrA" firstAttribute="centerX" secondItem="6Tk-OE-BBY" secondAttribute="centerX" id="Zbd-Yr-iHU"/>
                         </constraints>
                     </view>
                     <connections>
+                        <outlet property="beaconReading" destination="V4C-Gi-jrA" id="4Ti-ot-exX"/>
                         <outlet property="distanceReading" destination="gE0-ti-UpD" id="Zr7-CU-lLi"/>
                     </connections>
                 </viewController>
