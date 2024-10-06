@@ -22,6 +22,11 @@ class ViewController: UIViewController, CLLocationManagerDelegate {
     
     var locationManager: CLLocationManager?
     
+    var dict: [String: String] = [
+        "5A4BCFCE-174E-4BAC-A814-092E77F6B7E5": "Beacon 1",
+        "E2C56DB5-DFFB-48D2-B060-D0F5A71096E0": "Beacon 2"
+    ]
+    
     // Challenge 1
     var alertShown = false
     
@@ -40,7 +45,7 @@ class ViewController: UIViewController, CLLocationManagerDelegate {
         NSLayoutConstraint.activate([
             circle.widthAnchor.constraint(equalToConstant: 256),
             circle.heightAnchor.constraint(equalToConstant: 256),
-
+            
             circle.centerXAnchor.constraint(equalTo: self.view.centerXAnchor),
             circle.centerYAnchor.constraint(equalTo: self.view.centerYAnchor)
         ])
@@ -55,8 +60,8 @@ class ViewController: UIViewController, CLLocationManagerDelegate {
         
         view.backgroundColor = .gray
         
-
-
+        
+        
         
         // Challenge 1
         if let savedFirstLocated = UserDefaults.standard.object(forKey: "firstLocated") as? Bool {
@@ -130,7 +135,14 @@ class ViewController: UIViewController, CLLocationManagerDelegate {
                 UserDefaults.standard.set(self.alertShown, forKey: "firstLocated")
                 present(ac, animated: true)
             }
-            beaconReading.text = beacon.timestamp.description
+            
+            // Challenge 2
+            if dict.keys.contains(beacon.uuid.uuidString) {
+                beaconReading.text = dict[beacon.uuid.uuidString]!
+            } else {
+                beaconReading.text = "Unknown beacon"
+            }
+            
             update(distance: beacon.proximity)
         }
     }
