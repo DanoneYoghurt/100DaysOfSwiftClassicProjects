@@ -45,6 +45,11 @@ class GameScene: SKScene {
     var nextSequenceQueued = true
     var isGameEnded = false
     
+    //Challenge 1
+    let smallVelocity = Int.random(in: 3...5)
+    let bigVelocity = Int.random(in: 3...5)
+    let hugeVelocity = Int.random(in: 24...32)
+    
     override func didMove(to view: SKView) {
         let background = SKSpriteNode(imageNamed: "sliceBackground")
         background.position = CGPoint(x: 512, y: 384)
@@ -105,6 +110,31 @@ class GameScene: SKScene {
                 node.run(seq)
                 
                 score += 1
+                
+                if let index = activeEnemies.firstIndex(of: node) {
+                    activeEnemies.remove(at: index)
+                }
+                
+                run(SKAction.playSoundFileNamed("whack.caf", waitForCompletion: false))
+            } else if node.name == "fastEnemy" {
+                // destroy evil penguin
+                // Challenge 2: Create a fast enemy which gives bonus points
+                if let emitter = SKEmitterNode(fileNamed: "sliceHitEnemy") {
+                    emitter.position = node.position
+                    addChild(emitter)
+                }
+                
+                node.name = ""
+                
+                node.physicsBody?.isDynamic = false
+                let scaleOut = SKAction.scale(to: 0.001, duration: 0.2)
+                let fadeOut = SKAction.fadeOut(withDuration: 0.2)
+                let group = SKAction.group([scaleOut, fadeOut])
+                
+                let seq = SKAction.sequence([group, .removeFromParent()])
+                node.run(seq)
+                
+                score += 5
                 
                 if let index = activeEnemies.firstIndex(of: node) {
                     activeEnemies.remove(at: index)
@@ -270,7 +300,13 @@ class GameScene: SKScene {
                 emitter.position = CGPoint(x: 76, y: 64)
                 enemy.addChild(emitter)
             }
+        // Challenge 2: Create a fast enemy which gives bonus points
+        } else if enemyType == 2 {
+            enemy = SKSpriteNode(imageNamed: "penguinEvil")
+            run(SKAction.playSoundFileNamed("launch.caf", waitForCompletion: false))
+            enemy.name = "fastEnemy"
         } else {
+            
             enemy = SKSpriteNode(imageNamed: "penguin")
             run(SKAction.playSoundFileNamed("launch.caf", waitForCompletion: false))
             enemy.name = "enemy"
@@ -282,22 +318,31 @@ class GameScene: SKScene {
         let randomAngularVelocity = CGFloat.random(in: -3...3)
         let randomXVelocity: Int
         
+        // Challenge: replace the magic numbers and define them as the constant properties of a class
         if randomPosition.x < 256 {
-            randomXVelocity = Int.random(in: 8...15)
+            randomXVelocity = bigVelocity
         } else if randomPosition.x < 512 {
-            randomXVelocity = Int.random(in: 3...5)
+            randomXVelocity = smallVelocity
         } else if randomPosition.x < 768 {
-            randomXVelocity = -Int.random(in: 3...5)
+            randomXVelocity = -smallVelocity
         } else {
-            randomXVelocity = -Int.random(in: 8...15)
+            randomXVelocity = -bigVelocity
         }
         
-        let randomYVelocity = Int.random(in: 24...32)
+        let randomYVelocity = hugeVelocity
         
-        enemy.physicsBody = SKPhysicsBody(circleOfRadius: 64)
-        enemy.physicsBody?.velocity = CGVector(dx: randomXVelocity * 40, dy: randomYVelocity * 40)
-        enemy.physicsBody?.angularVelocity = randomAngularVelocity
-        enemy.physicsBody?.collisionBitMask = 0
+        // Challenge 2: Create a fast enemy which gives bonus points
+        if enemy.name == "fastEnemy" {
+            enemy.physicsBody = SKPhysicsBody(circleOfRadius: 64)
+            enemy.physicsBody?.velocity = CGVector(dx: randomXVelocity * 50, dy: randomYVelocity * 50)
+            enemy.physicsBody?.angularVelocity = randomAngularVelocity
+            enemy.physicsBody?.collisionBitMask = 0
+        } else {
+            enemy.physicsBody = SKPhysicsBody(circleOfRadius: 64)
+            enemy.physicsBody?.velocity = CGVector(dx: randomXVelocity * 40, dy: randomYVelocity * 40)
+            enemy.physicsBody?.angularVelocity = randomAngularVelocity
+            enemy.physicsBody?.collisionBitMask = 0
+        }
         
         addChild(enemy)
         activeEnemies.append(enemy)
@@ -317,6 +362,12 @@ class GameScene: SKScene {
                         activeEnemies.remove(at: index)
                     } else if node.name == "bombContainer" {
                         node.name = ""
+                        node.removeFromParent()
+                        activeEnemies.remove(at: index)
+                    } else if node.name == "fastEnemy" {
+                        node.name = ""
+                        subtractLife()
+                        
                         node.removeFromParent()
                         activeEnemies.remove(at: index)
                     }
@@ -408,6 +459,13 @@ class GameScene: SKScene {
             livesImages[1].texture = SKTexture(imageNamed: "sliceLifeGone")
             livesImages[2].texture = SKTexture(imageNamed: "sliceLifeGone")
         }
+        
+        // Challenge 3: add a game over label
+        let gameOverLabel = SKLabelNode(fontNamed: "Chalkduster")
+        gameOverLabel.text = "Game Over"
+        gameOverLabel.fontSize = 56
+        gameOverLabel.position = CGPoint(x: 512, y: 384)
+        addChild(gameOverLabel)
     }
     
     func subtractLife() {

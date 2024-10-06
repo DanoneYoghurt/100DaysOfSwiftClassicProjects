@@ -35,6 +35,8 @@ class ViewController: UIViewController, CLLocationManagerDelegate {
         circle.layer.cornerRadius = 128
         view.insertSubview(circle, at: 0)
         
+        circle.transform = CGAffineTransform(scaleX: 0.001, y: 0.001)
+        
         NSLayoutConstraint.activate([
             circle.widthAnchor.constraint(equalToConstant: 256),
             circle.heightAnchor.constraint(equalToConstant: 256),
