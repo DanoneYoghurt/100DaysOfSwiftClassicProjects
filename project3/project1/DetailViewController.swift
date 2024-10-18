@@ -5,6 +5,7 @@
 //  Created by Антон Баскаков on 04.08.2024.
 //
 
+import CoreGraphics
 import UIKit
 
 class DetailViewController: UIViewController {
@@ -42,7 +43,28 @@ class DetailViewController: UIViewController {
     }
     
     @objc func shareTapped() {
-        guard let image = imageView.image?.jpegData(compressionQuality: 0.8) else {
+        guard let imageSize = imageView.image?.size else { return }
+        let renderer = UIGraphicsImageRenderer(size: imageSize)
+        
+        let img = renderer.image { ctx in
+            guard let image = imageView.image else { return }
+            image.draw(at: .zero)
+            
+            let paragraphStyle = NSMutableParagraphStyle()
+            paragraphStyle.alignment = .left
+            
+            let attrs: [NSAttributedString.Key: Any] = [
+                .font: UIFont.systemFont(ofSize: 24),
+                .paragraphStyle: paragraphStyle,
+                .backgroundColor: UIColor.white
+            ]
+            
+            let attributedString = NSAttributedString(string: "From Storm Viewer", attributes: attrs)
+            
+            attributedString.draw(at: CGPoint(x: 5, y: 5))
+        }
+        
+        guard let image = img.jpegData(compressionQuality: 0.8) else {
             print("No image found")
             return
         }
