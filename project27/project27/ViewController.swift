@@ -22,7 +22,7 @@ class ViewController: UIViewController {
     @IBAction func redrawTapped(_ sender: Any) {
         currentDrawType += 1
         
-        if currentDrawType > 5 {
+        if currentDrawType > 7 {
             currentDrawType = 0
         }
         
@@ -39,6 +39,12 @@ class ViewController: UIViewController {
             drawLines()
         case 5:
             drawImagesAndText()
+        case 6:
+            // Challenge 1: Pick any emoji and try creating it using Core Graphics. You should find some easy enough, but for a harder challenge you could also try something like the star emoji.
+            drawEmoji()
+            case 7:
+            // Challenge 2: Use a combination of move(to:) and addLine(to:) to create and stroke a path that spells “TWIN” on the canvas.
+            drawTwin()
         default:
             break
         }
@@ -168,6 +174,77 @@ class ViewController: UIViewController {
             
             let mouse = UIImage(named: "mouse")
             mouse?.draw(at: CGPoint(x: 300, y: 150))
+        }
+        
+        imageView.image = img
+    }
+    
+    // Challenge 1
+    func drawEmoji() {
+        let renderer = UIGraphicsImageRenderer(size: CGSize(width: 512, height: 512))
+        
+        let img = renderer.image { ctx in
+            // drawing code
+            let rectangle = CGRect(x: 0, y: 0, width: 512, height: 512).insetBy(dx: 5, dy: 5)
+            
+            ctx.cgContext.setFillColor(UIColor.yellow.cgColor)
+            ctx.cgContext.setStrokeColor(UIColor.black.cgColor)
+            ctx.cgContext.setLineWidth(10)
+            
+            ctx.cgContext.addEllipse(in: rectangle)
+            ctx.cgContext.drawPath(using: .fillStroke)
+            
+            ctx.cgContext.move(to: CGPoint(x: 80, y: 180))
+            ctx.cgContext.addLine(to: CGPoint(x: 204, y: 180))
+            
+            ctx.cgContext.move(to: CGPoint(x: 308, y: 180))
+            ctx.cgContext.addLine(to: CGPoint(x: 432, y: 180))
+            
+            ctx.cgContext.move(to: CGPoint(x: 134, y: 400))
+            ctx.cgContext.addLine(to: CGPoint(x: 378, y: 400))
+            ctx.cgContext.strokePath()
+        }
+        
+        imageView.image = img
+    }
+    
+    // Challenge 2
+    func drawTwin() {
+        let renderer = UIGraphicsImageRenderer(size: CGSize(width: 512, height: 512))
+        
+        let img = renderer.image { ctx in
+            ctx.cgContext.setStrokeColor(UIColor.black.cgColor)
+            ctx.cgContext.setLineWidth(10)
+            
+            //T
+            ctx.cgContext.move(to: CGPoint(x: 0, y: 0))
+            ctx.cgContext.addLine(to: CGPoint(x: 100, y: 0))
+            ctx.cgContext.move(to: CGPoint(x: 50, y: 0))
+            ctx.cgContext.addLine(to: CGPoint(x: 50, y: 120))
+            
+            //W
+            ctx.cgContext.move(to: CGPoint(x: 134, y: 0))
+            ctx.cgContext.addLine(to: CGPoint(x: 160, y: 120))
+            ctx.cgContext.move(to: CGPoint(x: 160, y: 120))
+            ctx.cgContext.addLine(to: CGPoint(x: 180, y: 60))
+            ctx.cgContext.move(to: CGPoint(x: 180, y: 60))
+            ctx.cgContext.addLine(to: CGPoint(x: 204, y: 120))
+            ctx.cgContext.move(to: CGPoint(x: 204, y: 120))
+            ctx.cgContext.addLine(to: CGPoint(x: 234, y: 0))
+            
+            //I
+            ctx.cgContext.move(to: CGPoint(x: 288, y: 0))
+            ctx.cgContext.addLine(to: CGPoint(x: 288, y: 120))
+            
+            //N
+            ctx.cgContext.move(to: CGPoint(x: 328, y: 120))
+            ctx.cgContext.addLine(to: CGPoint(x: 328, y: 0))
+            ctx.cgContext.move(to: CGPoint(x: 328, y: 0))
+            ctx.cgContext.addLine(to: CGPoint(x: 382, y: 120))
+            ctx.cgContext.move(to: CGPoint(x: 382, y: 120))
+            ctx.cgContext.addLine(to: CGPoint(x: 382, y: 0))
+            
+            ctx.cgContext.strokePath()
         }
         
         imageView.image = img
