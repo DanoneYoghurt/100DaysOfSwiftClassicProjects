@@ -303,7 +303,9 @@
 				DEVELOPMENT_TEAM = 5P5HZ4F34W;
 				GENERATE_INFOPLIST_FILE = YES;
 				INFOPLIST_FILE = project10/Info.plist;
+				INFOPLIST_KEY_LSApplicationCategoryType = "";
 				INFOPLIST_KEY_NSCameraUsageDescription = "We need to capture photos";
+				INFOPLIST_KEY_NSFaceIDUsageDescription = "Identify yourself!";
 				INFOPLIST_KEY_UIApplicationSupportsIndirectInputEvents = YES;
 				INFOPLIST_KEY_UILaunchStoryboardName = LaunchScreen;
 				INFOPLIST_KEY_UIMainStoryboardFile = Main;
@@ -332,7 +334,9 @@
 				DEVELOPMENT_TEAM = 5P5HZ4F34W;
 				GENERATE_INFOPLIST_FILE = YES;
 				INFOPLIST_FILE = project10/Info.plist;
+				INFOPLIST_KEY_LSApplicationCategoryType = "";
 				INFOPLIST_KEY_NSCameraUsageDescription = "We need to capture photos";
+				INFOPLIST_KEY_NSFaceIDUsageDescription = "Identify yourself!";
 				INFOPLIST_KEY_UIApplicationSupportsIndirectInputEvents = YES;
 				INFOPLIST_KEY_UILaunchStoryboardName = LaunchScreen;
 				INFOPLIST_KEY_UIMainStoryboardFile = Main;
